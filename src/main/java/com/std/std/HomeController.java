@@ -47,6 +47,10 @@ public class HomeController {
         car.setIds(new ArrayList(){{add(1); add(2); add(3);}});
         return car;
     }
+    //localhost:8080  ==== 127.0.0.1:8080
+    //localhost:8080/person/add?name=홍길동&age=11 - 응답: 사람이 추가되었습니다.
+
+
     //전체 속성을 포함하는 생성자 함수 생성
     // getter setter 생성
     @AllArgsConstructor
