@@ -32,6 +32,29 @@ public class PersonController {
         return String.format("%d번째 사람 %s이(가) 추가되었습니다", person.getId(), person.getName());
     }
 
+    @GetMapping("/person/modify")
+    @ResponseBody
+    public String modifyPerson(@RequestParam("id") int id, @RequestParam("name") String name, @RequestParam("age") int age){
+
+        Person person = null;
+        String result = "";
+        for(Person p : personList){
+            if(p.getId() == id){
+                person = p;
+            }
+        }
+        if(person == null){
+            result = String.format("%d번 사람은 존재하지 않습니다",id);
+        } else {
+            person.setName(name);
+            person.setAge(age);
+            result = String.format("%d번 사람이 수정되었습니다",person.getId());
+        }
+
+        return result;
+    }
+
+
     @GetMapping("/person/remove")
     @ResponseBody
     public String removePerson(@RequestParam("id") int id){
